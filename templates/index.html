@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulldozer Price Predictor</title>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+</head>
+<body class="bg-gray-100 py-8 px-4">
+
+<div class="max-w-lg mx-auto bg-white p-8 rounded shadow-md">
+  <h1 class="text-2xl font-bold mb-8 text-center">Bulldozer Details Form</h1>
+  <!-- Specify the action attribute to send form data to the Flask route -->
+  <form id="machineForm" action="/predict" method="POST" class="space-y-4" onsubmit="submitForm(event)">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="flex flex-col space-y-2">
+      <label for="machineID" class="font-semibold">Machine ID:</label>
+      <input type="number" id="machineID" name="machineID" required class="input-field px-3 py-2 border rounded-md w-full">
+    </div>
+    <div class="flex flex-col space-y-2">
+      <label for="modelID" class="font-semibold">Model ID:</label>
+      <input type="number" id="modelID" name="modelID" required class="input-field px-3 py-2 border rounded-md w-full">
+    </div>
+      <div class="flex flex-col space-y-2">
+        <label for="machineHoursCurrentMeter" class="font-semibold">Machine Hours Meter:</label>
+        <input type="number" min="0" id="machineHoursCurrentMeter" name="machineHoursCurrentMeter" required class="input-field px-3 py-2 border rounded-md w-full">
+      </div>
+      
+      <div class="flex flex-col space-y-2">
+        <label for="fiModelDesc" class="font-semibold">Model Descriptor:</label>
+        <input type="text"  id="fiModelDesc" name="fiModelDesc" required class="input-field px-3 py-2 border rounded-md w-full">
+      </div>
+      
+      
+      
+   
+    
+    
+      <div class="flex flex-col space-y-2">
+        <label for="grouserTracks" class="font-semibold">Grouser Tracks:</label>
+        <select id="grouserTracks" name="grouserTracks" required class="input-field px-3 py-2 border rounded-md w-full">
+        <option value="Blank">Blank</option>
+        <option value="None or Unspecified">None or Unspecified</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+      <div class="flex flex-col space-y-2">
+        <label for="hydraulicsFlow" class="font-semibold">Hydraulics Flow:</label>
+        <select id="hydraulicsFlow" name="hydraulicsFlow" required class="input-field px-3 py-2 border rounded-md w-full">
+        <option value="Blank">Blank</option>
+        <option value="Standard">Standard</option>
+          <option value="High Flow">High Flow</option>
+          <option value="Low Flow">Low Flow</option>
+        </select>
+      </div>
+      <div class="flex flex-col space-y-2">
+        <label for="fiModelDescriptor" class="font-semibold">Model Descriptor:</label>
+         <select id="fiModelDescriptor" name="fiModelDescriptor" required class="input-field px-3 py-2 border rounded-md w-full">
+        <option value="Blank">Blank</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="2.00E+00">2.00E+00</option>
+        <option value="2N">2N</option>
+        <option value="3">3</option>
+        <option value="3.00E+00">3.00E+00</option>
+        <option value="3C">3C</option>
+        <option value="3L">3L</option>
+        <option value="3NO">3NO</option>
+        <option value="4WD">4WD</option>
+        <option value="4x4x4">4x4x4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="6K">6K</option>
+        <option value="7">7</option>
+        <option value="7.00E+00">7.00E+00</option>
+        <option value="7A">7A</option>
+        <option value="8">8</option>
+        <option value=" 14FT">14FT</option>
+        <option value="LGP">LGP</option>
+        <option value="SUPER">SUPER</option>
+        <option value="XLT">XLT</option>
+        <option value="XT">XT</option>
+        <option value="ZX">ZX</option>
+        <option value="(BLADE RUNNER)">(BLADE RUNNER)</option>
+        <option value="A">A</option>
+        <option value="AE0">AE0</option>
+        <option value="AVANCE">AVANCE</option>
+        <option value="B">B</option>
+        <option value="BE">BE</option>
+        <option value="C">C</option>
+        <option value="CK">CK</option>
+        <option value="CR">CR</option>
+        <option value="CRSB">CRSB</option>
+        <option value="CUSTOM">CUSTOM</option>
+        <option value="DA">DA</option>
+        <option value="DELUXE">DELUXE</option>
+        <option value="DHP">DHP</option>
+        <option value="DINGO">DINGO</option>
+        <option value="DLL">DLL</option>
+        <option value="DT">DT</option>
+        <option value="DW">DW</option>
+        <option value="E">E</option>
+        <option value="ESL">ESL</option>
+        <option value="G">G</option>
+        <option value="GALEO">GALEO</option>
+        <option value="H">H</option>
+        <option value="H5">H5</option>
+        <option value="HD">HD</option>
+        <option value="HF">HF</option>
+        <option value="High Lift">High Lift</option>
+        <option value="HighLift">HighLift</option>
+        <option value="HSD">HSD</option>
+        <option value="HT">HT</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+        <option value="IT">IT</option>
+        <option value="IV">IV</option>
+        <option value="K">K</option>
+        <option value="K3">K3</option>
+        <option value="K5">K5</option>
+        <option value="KA">KA</option>
+        <option value="KBNA">KBNA</option>
+        <option value="L">L</option>
+        <option value="LC">LC</option>
+        <option value="LC8">LC8</option>
+        <option value="LCH">LCH</option>
+        <option value="LCR">LCR</option>
+        <option value="LCRTS">LCRTS</option>
+        <option value="LE">LE</option>
+        <option value="LK">LK</option>
+        <option value="LL">LL</option>
+        <option value="LM">LM</option>
+        <option value="LN">LN</option>
+        <option value="LongReach">LongReach</option>
+        <option value="LR">LR</option>
+        <option value="LRC">LRC</option>
+        <option value="LRR">LRR</option>
+        <option value="LS">LS</option>
+        <option value="LT">LT</option>
+        <option value="LU">LU</option>
+        <option value="LX">LX</option>
+        <option value="M">M</option>
+        <option value="MC">MC</option>
+        <option value="ME">ME</option>
+        <option value="MH">MH</option>
+        <option value="N">N</option>
+        <option value="NLC">NLC</option>
+        <option value="NSUC">NSUC</option>
+        <option value="P">P</option>
+        <option value="PLUS">PLUS</option>
+        <option value="PRO">PRO</option>
+        <option value="RR">RR</option>
+        <option value="RTS">RTS</option>
+        <option value="S">S</option>
+        <option value="SA">SA</option>
+        <option value="SB">SB</option>
+        <option value="SE">SE</option>
+        <option value="SERIES3">SERIES3</option>
+        <option value="SITEMASTER">SITEMASTER</option>
+        <option value="SL">SL</option>
+        <option value="SLGP">SLGP</option>
+        <option value="SM">SM</option>
+        <option value="SR">SR</option>
+        <option value="SRDZ">SRDZ</option>
+        <option value="SRLC">SRLC</option>
+        <option value="SSR">SSR</option>
+        <option value="SU">SU</option>
+        <option value="SUPER K">SUPER K</option>
+        <option value="T">T</option>
+        <option value="TC">TC</option>
+        <option value="TK">TK</option>
+        <option value="TLB">TLB</option>
+        <option value="TM">TM</option>
+        <option value="TP">TP</option>
+        <option value="TURBO">TURBO</option>
+        <option value="U">U</option>
+        <option value="USLC">USLC</option>
+        <option value="V">V</option>
+        <option value="VHP">VHP</option>
+        <option value="VHP/AWD">VHP/AWD</option>
+        <option value="WLT">WLT</option>
+        <option value="WT">WT</option>
+        <option value="X">X</option>
+        <option value="XD">XD</option>
+        <option value="XL">XL</option>
+        <option value="XLVP">XLVP</option>
+        <option value="XP">XP</option>
+        <option value="XR">XR</option>
+        <option value="XTV">XTV</option>
+        <option value="XW">XW</option>
+        <option value="Y">Y</option>
+        <option value="Z">Z</option>
+        <option value="ZTS">ZTS</option>
+        <option value="ZX">ZX</option>
+    </select>
+      </div>
+      <div class="flex flex-col space-y-2">
+        <label for="productSize" class="font-semibold">Product Size:</label>
+        <select id="productSize" name="productSize" required class="input-field px-3 py-2 border rounded-md w-full">
+        
+        <option value="Blank">Blank</option>
+        <option value="Medium">Compact</option>
+        <option value="Large">Large</option>
+        <option value="Large/Medium">Large/Medium</option>
+         <option value="Medium">Medium</option>
+          <option value="Mini">Mini</option>
+         <option value="Small">Small</option>
+         
+        </select>
+      </div>
+      
+    </div>
+    
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Submit
+    </button>
+  </form>
+</div>
+
+<div class="max-w-lg mx-auto bg-white p-8 rounded shadow-md mt-8">
+  <h2 class="text-xl font-bold mb-4">Predicted Result</h2>
+  <div class="border border-gray-200 p-4">
+    <p id="predictionResult" class="text-lg text-gray-800">{{ prediction_text }}</p>
+  </div>
+</div>
+
+
+<script>
+  function submitForm(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    
+    // Get the form data
+    const formData = new FormData(document.getElementById('machineForm'));
+    
+    // Make an asynchronous request to the server
+    fetch('/predict', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      // Handle response
+      if (response.ok) {
+        return response.text(); // Get the text of the response
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    })
+    .then(html => {
+      // Extract the predicted sale price from the HTML response
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const predictionText = doc.getElementById('predictionResult').textContent;
+      const predictedSalePrice = predictionText.split(':')[1].trim();
+
+      // Update the content of the predictionResult element with the predicted sale price
+      document.getElementById('predictionResult').textContent = "Predicted Price : $"+predictedSalePrice;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+</script>
+
+
+</body>
+</html>
+

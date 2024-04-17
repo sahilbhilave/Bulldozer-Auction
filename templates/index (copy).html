@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulldozer Price Predictor</title>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 py-8 px-4">
+
+<div class="max-w-lg mx-auto bg-white p-8 rounded shadow-md">
+  <h1 class="text-2xl font-bold mb-8 text-center">Machine Details Form</h1>
+  <!-- Specify the action attribute to send form data to the Flask route -->
+  <form id="machineForm" action="/predict" method="POST" class="space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="flex flex-col space-y-2">
+      <label for="machineID" class="font-semibold">Machine ID:</label>
+      <input type="number" id="machineID" name="machineID" required class="input-field px-3 py-2 border rounded-md w-full">
+    </div>
+    <div class="flex flex-col space-y-2">
+      <label for="modelID" class="font-semibold">Model ID:</label>
+      <input type="number" id="modelID" name="modelID" required class="input-field px-3 py-2 border rounded-md w-full">
+    </div>
+      <div class="flex flex-col space-y-2">
+        <label for="machineHoursCurrentMeter" class="font-semibold">Machine Hours Meter:</label>
+        <input type="number" min="0" id="machineHoursCurrentMeter" name="machineHoursCurrentMeter" required class="input-field px-3 py-2 border rounded-md w-full">
+      </div>
+      
+      <div class="flex flex-col space-y-2">
+        <label for="fiModelDesc" class="font-semibold">Model Descriptor:</label>
+        <input type="text"  id="fiModelDesc" name="fiModelDesc" required class="input-field px-3 py-2 border rounded-md w-full">
+      </div>
+      
+      
+      
+   
+    
+    
+      <div class="flex flex-col space-y-2">
+        <label for="grouserTracks" class="font-semibold">Grouser Tracks:</label>
+        <select id="grouserTracks" name="grouserTracks" required class="input-field px-3 py-2 border rounded-md w-full">
+        <option value="None or Unspecified">None or Unspecified</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+      <div class="flex flex-col space-y-2">
+        <label for="hydraulicsFlow" class="font-semibold">Hydraulics Flow:</label>
+        <select id="hydraulicsFlow" name="hydraulicsFlow" required class="input-field px-3 py-2 border rounded-md w-full">
+        <option value="Standard">Standard</option>
+          <option value="High Flow">High Flow</option>
+          <option value="Low Flow">Low Flow</option>
+        </select>
+      </div>
+      <div class="flex flex-col space-y-2">
+        <label for="fiModelDescriptor" class="font-semibold">Model Descriptor:</label>
+        <select id="fiModelDescriptor" name="fiModelDescriptor" required class="input-field px-3 py-2 border rounded-md w-full">
+            <option value="LC">LC</option>
+            <option value="L">L</option>
+             <option value="LT">LT</option>
+             <option value="CR">CR</option>
+             <option value="SB">SB</option>
+    
+    <option value="XL">XL</option>
+    <option value="LGP">LGP</option>
+    <option value="VHP">VHP</option>
+    <option value="Z">Z</option>
+    <option value="MC">MC</option>
+    
+    <option value="H">H</option>
+    <option value="E">E</option>
+    <option value="E">HT</option>
+
+    
+    
+        </select>
+      </div>
+      <div class="flex flex-col space-y-2">
+        <label for="productSize" class="font-semibold">Product Size:</label>
+        <select id="productSize" name="productSize" required class="input-field px-3 py-2 border rounded-md w-full">
+         <option value="Medium">Medium</option>
+         <option value="Small">Small</option>
+         <option value="Large/Medium">Large/Medium</option>
+         <option value="Mini">Mini</option>
+         <option value="Large">Large</option>
+    
+        </select>
+      </div>
+      
+    </div>
+    
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Submit
+    </button>
+  </form>
+</div>
+
+<div class="max-w-lg mx-auto bg-white p-8 rounded shadow-md mt-8">
+  <h2 class="text-xl font-bold mb-4">Predicted Result</h2>
+  <div class="border border-gray-200 p-4">
+    <p class="text-lg text-gray-800">{{ prediction_text }}</p>
+  </div>
+</div>
+
+
+</body>
+</html>
+
